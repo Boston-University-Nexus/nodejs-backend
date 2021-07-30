@@ -1,3 +1,4 @@
+// Where we define the mapping from saved json to db population
 // file, table name, cols
 const mapping = [
   ["buhub", "buhubs", "buhub_ID, buhub_name, buhub_creditsNeeded"],
