@@ -8,8 +8,6 @@ const DROP_TABLES = true;
 const CREATE_TABLES = true;
 const POPULATE_TABLES = true;
 
-console.log(process.env.SQL_USERNAME);
-
 // MYSQL Connection
 const mysql = require("mysql");
 const connection = mysql.createConnection({

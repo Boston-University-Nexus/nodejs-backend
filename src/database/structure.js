@@ -1,3 +1,4 @@
+// WHERE WE DEFINE THE STRUCTURE OF OUR TABLES
 const structure = [
   [
     "buhubs",
@@ -5,15 +6,15 @@ const structure = [
   ],
   [
     "professors",
-    "professor_ID int NOT NULL AUTO_INCREMENT, professor_name VARCHAR(255), professor_numberOfRatings INT, professor_rating FLOAT, PRIMARY KEY (professor_ID)",
+    "professor_ID int NOT NULL AUTO_INCREMENT, professor_name VARCHAR(255), professor_numberOfRatings INT, professor_rating DECIMAL(3,2), PRIMARY KEY (professor_ID)",
   ],
   [
     "courses",
-    "course_ID int NOT NULL AUTO_INCREMENT, course_title VARCHAR(255), course_code VARCHAR(8), course_college VARCHAR(3), course_department VARCHAR(2), course_number VARCHAR(3), course_semester VARCHAR(20), course_prereqs VARCHAR(255), course_coreqs VARCHAR(255), course_description TEXT(1023), course_credits TINYINT, course_numOfQualityRatings INT, course_qualityRating INT, course_numOfDifficultyRatings INT, course_difficultyRating INT, PRIMARY KEY (course_ID)",
+    "course_ID int NOT NULL AUTO_INCREMENT, course_title VARCHAR(255), course_code VARCHAR(8), course_college VARCHAR(3), course_department VARCHAR(2), course_number VARCHAR(3), course_semester VARCHAR(20), course_prereqs VARCHAR(255), course_coreqs VARCHAR(255), course_description TEXT(1023), course_credits TINYINT, course_numOfQualityRatings INT, course_qualityRating DECIMAL(3,2), course_numOfDifficultyRatings INT, course_difficultyRating DECIMAL(3,2), PRIMARY KEY (course_ID)",
   ],
   [
     "sections",
-    "section_ID int NOT NULL AUTO_INCREMENT, section_code VARCHAR(255), professor_ID int, CONSTRAINT FK_sections_professor_ID FOREIGN KEY (professor_ID) REFERENCES professors(professor_ID), section_start VARCHAR(5), section_end VARCHAR(5), section_days VARCHAR(255), course_ID int, CONSTRAINT FK_sections_course_ID FOREIGN KEY (course_ID) REFERENCES courses(course_ID), section_type VARCHAR(25), section_building VARCHAR(20), section_room VARCHAR(20),  section_numOfProfessorRatings INT, section_professorRating INT, section_numOfWorkloadRatings INT, section_workloadRating INT, PRIMARY KEY (section_ID)",
+    "section_ID int NOT NULL AUTO_INCREMENT, section_code VARCHAR(255), professor_ID int, CONSTRAINT FK_sections_professor_ID FOREIGN KEY (professor_ID) REFERENCES professors(professor_ID), section_start VARCHAR(5), section_end VARCHAR(5), section_days VARCHAR(255), course_ID int, CONSTRAINT FK_sections_course_ID FOREIGN KEY (course_ID) REFERENCES courses(course_ID), section_type VARCHAR(25), section_building VARCHAR(20), section_room VARCHAR(20),  section_numOfProfessorRatings INT, section_professorRating DECIMAL(3,2), section_numOfWorkloadRatings INT, section_workloadRating DECIMAL(3,2), PRIMARY KEY (section_ID)",
   ],
   [
     "majors",
@@ -29,7 +30,7 @@ const structure = [
   ],
   [
     "ratings",
-    "rating_ID int NOT NULL AUTO_INCREMENT, course_ID int, CONSTRAINT FK_ratings_course_ID FOREIGN KEY (course_ID) REFERENCES courses(course_ID), user_ID int, CONSTRAINT FK_ratings_user_ID FOREIGN KEY (user_ID) REFERENCES users(user_ID), rating_qualityRating INT, rating_difficultyRating INT, rating_professorRating INT, rating_workloadRating INT, PRIMARY KEY (rating_ID)",
+    "rating_ID int NOT NULL AUTO_INCREMENT, course_ID int, professor_ID int, CONSTRAINT FK_ratings_course_ID FOREIGN KEY (course_ID) REFERENCES courses(course_ID), CONSTRAINT FK_ratings_professor_ID FOREIGN KEY (professor_ID) REFERENCES professors(professor_ID), user_ID int, CONSTRAINT FK_ratings_user_ID FOREIGN KEY (user_ID) REFERENCES users(user_ID), rating_qualityRating DECIMAL(3,2), rating_difficultyRating DECIMAL(3,2), rating_professorRating DECIMAL(3,2), rating_workloadRating DECIMAL(3,2), PRIMARY KEY (rating_ID)",
   ],
 ];
 
