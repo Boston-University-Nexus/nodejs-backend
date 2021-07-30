@@ -3,7 +3,7 @@ const connection = mysql.createConnection({
   host: "localhost",
   user: process.env.SQL_USERNAME,
   password: process.env.SQL_PASSWORD,
-  database: "sampleDB",
+  database: process.env.SQL_DATABASE,
 });
 
 connection.connect((err) => {
@@ -16,7 +16,7 @@ connection.connect((err) => {
 
 const queryDB = (query, data_insert) => {
   return new Promise((data) =>
-    connection.query(query, [data_insert], (err, rows, fields) => {
+    connection.query(query, data_insert, (err, rows, fields) => {
       if (err) {
         console.log("Error querying DB", err);
         data([]);

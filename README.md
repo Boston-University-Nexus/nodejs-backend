@@ -9,5 +9,5 @@ npm run dev
 
 ## API Endpoints
 
-- /api/courses/ - All courses
-- /api/courses/:AAABB111 - Selected course info
+- /apicourses/ - All courses
+- /apicourses/:AAABB111 - Selected course info

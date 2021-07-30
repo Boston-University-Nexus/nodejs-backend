@@ -1,19 +1,22 @@
 const structure = require("./structure");
 const mapping = require("./mapping");
 const fs = require("fs");
+require("dotenv").config();
 
 // CONFIG
 const DROP_TABLES = true;
 const CREATE_TABLES = true;
 const POPULATE_TABLES = true;
 
+console.log(process.env.SQL_USERNAME);
+
 // MYSQL Connection
 const mysql = require("mysql");
 const connection = mysql.createConnection({
   host: "localhost",
-  user: "root",
-  password: process.env.SQL_USERNAME,
-  database: process.env.SQL_PASSWORD,
+  user: process.env.SQL_USERNAME,
+  password: process.env.SQL_PASSWORD,
+  database: process.env.SQL_DATABASE,
 });
 
 const queryDB = (query, data_insert) => {
@@ -57,7 +60,7 @@ const createTables = async () => {
 // Loop to populate all tables
 const populateTables = async () => {
   for (const table of mapping) {
-    let raw = fs.readFileSync(`../data/resultJson/${table[0]}.json`);
+    let raw = fs.readFileSync(`src/data/resultJson/${table[0]}.json`);
     raw = JSON.parse(raw);
 
     const result = await populateTable(table[1], table[2], raw);

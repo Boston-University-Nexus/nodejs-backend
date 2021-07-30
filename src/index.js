@@ -17,9 +17,9 @@ const coursesRouter = require("./routers/courses");
 const calendarsRouter = require("./routers/calendars");
 const hubsRouter = require("./routers/hubs");
 
-app.use("/api/courses", coursesRouter);
-app.use("/api/calendars", calendarsRouter);
-app.use("/api/hubs", hubsRouter);
+app.use("/courses", coursesRouter);
+app.use("/calendars", calendarsRouter);
+app.use("/hubs", hubsRouter);
 
 // Middlewares
 app.use(morgan("dev"));
