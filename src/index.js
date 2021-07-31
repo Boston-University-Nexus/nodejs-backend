@@ -80,19 +80,19 @@ app.get("/shibboleth/metadata", (req, res) => {
 });
 
 // Routes
-const coursesRouter = require("./routers/courses");
-const calendarsRouter = require("./routers/calendars");
-const hubsRouter = require("./routers/hubs");
-const sectionsRouter = require("./routers/sections");
-const professorsRouter = require("./routers/professors");
-const ratingsRouter = require("./routers/ratings");
+// const coursesRouter = require("./routers/courses");
+// const calendarsRouter = require("./routers/calendars");
+// const hubsRouter = require("./routers/hubs");
+// const sectionsRouter = require("./routers/sections");
+// const professorsRouter = require("./routers/professors");
+// const ratingsRouter = require("./routers/ratings");
 
-app.use("/courses", coursesRouter);
-app.use("/calendars", calendarsRouter);
-app.use("/hubs", hubsRouter);
-app.use("/sections", sectionsRouter);
-app.use("/professors", professorsRouter);
-app.use("/ratings", ratingsRouter);
+// app.use("/courses", coursesRouter);
+// app.use("/calendars", calendarsRouter);
+// app.use("/hubs", hubsRouter);
+// app.use("/sections", sectionsRouter);
+// app.use("/professors", professorsRouter);
+// app.use("/ratings", ratingsRouter);
 
 // Middlewares
 app.use(morgan("dev"));
