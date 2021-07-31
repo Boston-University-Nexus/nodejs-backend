@@ -3,13 +3,13 @@ require("dotenv").config();
 // Express app + cors
 const express = require("express");
 const cors = require("cors");
-
 const app = express();
 const morgan = require("morgan");
 
 // Config
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.set("port", process.env.PORT || 8000);
 
 // Authentication
@@ -25,11 +25,8 @@ passport.deserializeUser(function (user, done) {
 });
 
 const SamlOptions = {
-  // URL that goes from the Identity Provider -> Service Provider
   callbackUrl: process.env.CALLBACK_URL,
-  // URL that goes from the Service Provider -> Identity Provider
   entryPoint: process.env.ENTRY_POINT,
-  // Usually specified as `/shibboleth` from site root
   issuer: process.env.ISSUER,
   identifierFormat: null,
   validateInResponseTo: false,
@@ -78,7 +75,7 @@ app.post(
 
 app.get("/login/fail", (req, res) => res.status(401).send("Login failed"));
 
-app.get("/login/metadata", (req, res) => {
+app.get("/shibboleth/metadata", (req, res) => {
   res.type("application/xml");
   let cert = JSON.parse(`"${process.env.SHIBBOLETH_CERT}"`);
 
