@@ -1,33 +1,34 @@
 const { Router } = require("express");
 const queryDB = require("../database/db");
 
-const { applyQueryAsFilters } = require("./functions");
+const { applyQueryAsFilters, errOrRes } = require("./functions");
 
 const router = Router();
 
 router.get("/", async (req, res) => {
-  if (Object.keys(req.query).length === 0) {
-    let result = await queryDB("SELECT * FROM courses;");
-    res.send(result);
-  } else {
-    let allowed_queries = [
-      "course_code",
-      "course_college",
-      "course_department",
-      "course_number",
-      "course_code_contains",
-      "course_college_contains",
-      "course_department_contains",
-      "course_number_contains",
-    ];
-    let [params, query] = applyQueryAsFilters(req.query, allowed_queries);
+  const allowed_queries = [
+    "course_code",
+    "course_college",
+    "course_department",
+    "course_number",
+    "course_code_contains",
+    "course_college_contains",
+    "course_department_contains",
+    "course_number_contains",
+  ];
 
-    let result = await queryDB(
-      "SELECT * FROM courses WHERE 1=1" + query,
-      params
-    );
-    res.send(result);
-  }
+  const { page } = req.query;
+  let [params, query] = applyQueryAsFilters(req.query, allowed_queries, page);
+  let result = await queryDB("SELECT * FROM courses WHERE 1=1" + query, params);
+
+  errOrRes(
+    res,
+    result,
+    400,
+    200,
+    "No classes found matching that query.",
+    result
+  );
 });
 
 module.exports = router;

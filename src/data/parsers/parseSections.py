@@ -1,86 +1,83 @@
 import json, csv, sys
 
-# Open the scraped data from Nic and Vineet as dictionary
-courseDescriptions = open("../resultJson/course_descriptions.json")
-data = json.load(courseDescriptions)
 
-classesDict = []
+def parseSections():
+    # Open the scraped data from Nic and Vineet as dictionary
+    courseDescriptions = open("../result/course_descriptions.json")
+    data = json.load(courseDescriptions)
 
-# Open all existing classes as dictionary
-existingClasses = open("../resultJson/classes.json")
-eC = json.load(existingClasses)
+    classesDict = []
 
-# Open all existing professors as dictionary
-existingProfs = open("../resultJson/professors.json")
-professorList = json.load(existingProfs)
+    # Open all existing classes as dictionary
+    existingClasses = open("../result/classes.json")
+    eC = json.load(existingClasses)
 
+    # Open all existing professors as dictionary
+    existingProfs = open("../result/professors.json")
+    professorList = json.load(existingProfs)
 
-scheduleRows = []
-count = 1
+    scheduleRows = []
+    count = 1
 
-with open("../resultJson/schedule.csv") as scheduleFile:
-    scheduleread = csv.reader(scheduleFile, delimiter=",")
+    with open("../result/schedule.csv") as scheduleFile:
+        scheduleread = csv.reader(scheduleFile, delimiter=",")
 
-    for x in scheduleread:
-        scheduleRows.append(x)
+        for x in scheduleread:
+            scheduleRows.append(x)
 
-for idx, row in enumerate(scheduleRows):
-    print(str(idx) + "/" + str(len(scheduleRows) - 1))
-    if len(row[0]) == 12:
-        courseName = row[0][:6] + " " + row[0][-6:-3]
+    for idx, row in enumerate(scheduleRows):
+        print(str(idx) + "/" + str(len(scheduleRows) - 1))
+        if len(row[0]) == 12:
+            courseName = row[0][:6] + " " + row[0][-6:-3]
 
-        for item in eC:
-            if item[2] == courseName.replace(" ", ""):
-                pk = item[0]
+            for item in eC:
+                if item[2] == courseName.replace(" ", ""):
+                    pk = item[0]
 
-        try:
-            for section in data[courseName]["sections"]:
-                if section["title"] == row[0][-2:]:
-                    # Get correct prof pk
-                    for prof in professorList:
-                        if prof[1] == section["prof"]:
-                            profpk = prof[0]
-                            break
+            try:
+                for section in data[courseName]["sections"]:
+                    if section["title"] == row[0][-2:]:
+                        # Get correct prof pk
+                        for prof in professorList:
+                            if prof[1] == section["prof"]:
+                                profpk = prof[0]
+                                break
 
-            time = [row[10], row[11]]
+                time = [row[10], row[11]]
 
-            for i in range(len(time)):
-                if len(time[i]) < 1:
-                    time[i] = "00:00"
-                else:
-                    hour = int(time[i].split(":")[0])
+                for i in range(len(time)):
+                    if len(time[i]) < 1:
+                        time[i] = "00:00"
+                    else:
+                        hour = int(time[i].split(":")[0])
 
-                    if len(time[i]) < 8:
-                        time[i] = "0" + time[i]
+                        if len(time[i]) < 8:
+                            time[i] = "0" + time[i]
 
-                    if "PM" in time[i] and hour < 12:
-                        time[i] = str(hour + 12) + time[i][2:]
-                    elif "AM" in time[i] and hour == 12:
-                        time[i] = str(hour + 12) + time[i][2:]
+                        if "PM" in time[i] and hour < 12:
+                            time[i] = str(hour + 12) + time[i][2:]
+                        elif "AM" in time[i] and hour == 12:
+                            time[i] = str(hour + 12) + time[i][2:]
 
-                    time[i] = time[i][:-3]
+                        time[i] = time[i][:-3]
 
-            # Django requires model in json
-            arr = [
-                count,
-                row[0][-2:],
-                profpk,
-                time[0],
-                time[1],
-                row[9],
-                pk,
-                row[4],
-                row[7],
-                row[8],
-                0,
-                0,
-                0,
-                0,
-            ]
-            count += 1
-            classesDict.append(arr)
-        except Exception as e:
-            pass
+                # Django requires model in json
+                arr = [
+                    count,
+                    row[0][-2:],
+                    profpk,
+                    time[0],
+                    time[1],
+                    row[9],
+                    pk,
+                    row[4],
+                    row[7],
+                    row[8],
+                ]
+                count += 1
+                classesDict.append(arr)
+            except Exception as e:
+                pass
 
-with open("../resultJson/sections.json", "w") as json_file:
-    json.dump(classesDict, json_file)
+    with open("../result/sections.json", "w") as json_file:
+        json.dump(classesDict, json_file)

@@ -3,53 +3,18 @@ require("dotenv").config();
 // Express app + cors
 const express = require("express");
 const cors = require("cors");
-const app = express();
 const morgan = require("morgan");
+const session = require("express-session");
+
+const app = express();
 
 // Config
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set("port", process.env.PORT || 8000);
+app.use(morgan("dev"));
 
-// Authentication
-const passport = require("passport");
-const SamlStrategy = require("passport-saml").Strategy;
-
-passport.serializeUser(function (user, done) {
-  done(null, user);
-});
-
-passport.deserializeUser(function (user, done) {
-  done(null, user);
-});
-
-const SamlOptions = {
-  callbackUrl: process.env.CALLBACK_URL,
-  entryPoint: process.env.ENTRY_POINT,
-  issuer: process.env.ISSUER,
-  identifierFormat: null,
-  validateInResponseTo: false,
-  disableRequestedAuthnContext: true,
-};
-
-SamlOptions.decryptionPvk = JSON.parse(`"${process.env.SHIBBOLETH_KEY}"`);
-SamlOptions.privateCert = JSON.parse(`"${process.env.SHIBBOLETH_KEY}"`);
-SamlOptions.cert = JSON.parse(`"${process.env.SHIBBOLETH_IDP_CERT}"`);
-
-const samlStrategy = new SamlStrategy(SamlOptions, (profile, done) =>
-  done(null, profile)
-);
-
-passport.use(samlStrategy);
-
-// Authentication for routes
-const ensureAuthenticated = (req, res, next) => {
-  if (req.isAuthenticated()) return next();
-  else return res.redirect("/login");
-};
-
-const session = require("express-session");
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -57,12 +22,20 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+const { ensureAuthenticated, passport } = require("./auth/index");
+
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Authentication routes
+app.get("/whoami", (req, res, next) => {
+  if (req.isAuthenticated()) return res.status(200).json({ user: req.user });
+  else return res.status(401).json({ messsage: "User is not authenticated" });
+});
+
 app.get(
-  "/login/",
+  "/login",
   passport.authenticate("saml", { failureRedirect: "/login/fail" }),
   (req, res) => res.redirect("/")
 );
@@ -85,24 +58,19 @@ app.get("/shibboleth/metadata", (req, res) => {
 });
 
 // Routes
-// const coursesRouter = require("./routers/courses");
-// const calendarsRouter = require("./routers/calendars");
-// const hubsRouter = require("./routers/hubs");
-// const sectionsRouter = require("./routers/sections");
-// const professorsRouter = require("./routers/professors");
-// const ratingsRouter = require("./routers/ratings");
+const coursesRouter = require("./routers/courses");
+const schedulesRouter = require("./routers/schedules");
+const hubsRouter = require("./routers/hubs");
+const sectionsRouter = require("./routers/sections");
+const professorsRouter = require("./routers/professors");
+const ratingsRouter = require("./routers/ratings");
 
-// app.use("/courses", coursesRouter);
-// app.use("/calendars", calendarsRouter);
-// app.use("/hubs", hubsRouter);
-// app.use("/sections", sectionsRouter);
-// app.use("/professors", professorsRouter);
-// app.use("/ratings", ratingsRouter);
-
-// Middlewares
-app.use(morgan("dev"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use("/courses", coursesRouter);
+app.use("/schedules", schedulesRouter);
+app.use("/hubs", hubsRouter);
+app.use("/sections", sectionsRouter);
+app.use("/professors", professorsRouter);
+app.use("/ratings", ratingsRouter);
 
 // Server start
 app.listen(app.get("port"), () => {

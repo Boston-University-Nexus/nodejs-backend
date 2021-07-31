@@ -1,21 +1,23 @@
 const { Router } = require("express");
 const queryDB = require("../database/db");
 
-const { applyQueryAsFilters } = require("./functions");
+const { applyQueryAsFilters, errOrRes } = require("./functions");
 
 const router = Router();
 
 router.get("/", async (req, res) => {
   if (Object.keys(req.query).length === 0) {
     let result = await queryDB("SELECT * FROM buhubs");
-    res.send(result);
+    errOrRes(res, result, 400, 200, "No hubs found.", result);
   } else {
-    let allowed_queries = ["course_code", "buhub_ID"];
-    let addOns = ["courses.", "buhubs."];
+    const allowed_queries = ["course_code", "buhub_ID"];
+    const addOns = ["courses.", "buhubs."];
+    const { page } = req.query;
 
     let [params, query] = applyQueryAsFilters(
       req.query,
       allowed_queries,
+      page,
       addOns
     );
 
@@ -24,7 +26,15 @@ router.get("/", async (req, res) => {
         query,
       params
     );
-    res.send(result);
+
+    errOrRes(
+      res,
+      result,
+      400,
+      200,
+      "No hubs found matching that query.",
+      result
+    );
   }
 });
 
