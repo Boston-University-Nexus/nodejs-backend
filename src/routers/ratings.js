@@ -36,6 +36,19 @@ const updateRatings = (data) => {
   }
 };
 
+// Return error if data is bad
+const invalidData = (res) => {
+  res.status(400).json({
+    error:
+      "There was an error with the data provided. Please try with the correct course, professor, and ratings (1-5)",
+  });
+};
+
+// Make sure ratings are between 1 and 5
+const checkRating = (rating) => {
+  return rating > 0 && rating <= 5;
+};
+
 router.post("/", async (req, res) => {
   const {
     professorRating,
@@ -46,6 +59,7 @@ router.post("/", async (req, res) => {
     course,
   } = req.body;
 
+  // Save new rating
   let params = [
     course,
     1,
@@ -56,11 +70,25 @@ router.post("/", async (req, res) => {
     workloadRating,
   ];
 
-  // Save new rating
-  await queryDB(
+  if (
+    !checkRating(qualityRating) ||
+    !checkRating(workloadRating) ||
+    !checkRating(difficultyRating) ||
+    !checkRating(professorRating)
+  ) {
+    invalidData(res);
+    return;
+  }
+
+  let result = await queryDB(
     "INSERT INTO ratings (course_ID,user_ID,professor_ID,rating_qualityRating,rating_difficultyRating,rating_professorRating,rating_workloadRating) VALUES (?)",
     [params]
   );
+
+  if (!result) {
+    invalidData(res);
+    return;
+  }
 
   // Update course ratings (quality, difficulty)
   let prev = (
@@ -119,7 +147,7 @@ router.post("/", async (req, res) => {
     data
   );
 
-  res.send("OK");
+  res.status(201).send();
 });
 
 module.exports = router;
