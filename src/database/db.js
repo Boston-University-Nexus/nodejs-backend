@@ -18,6 +18,7 @@ const queryDB = (query, data_insert) => {
   return new Promise((data) =>
     connection.query(query, data_insert, (err, rows, fields) => {
       if (err) {
+        console.log(err);
         data(false);
       } else {
         return data(rows);

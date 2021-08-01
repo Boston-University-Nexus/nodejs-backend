@@ -75,3 +75,7 @@ def parseClasses():
 
     with open("../result/classes.json", "w") as json_file:
         json.dump(saveArr, json_file)
+
+
+if __name__ == "__main__":
+    parseClasses()

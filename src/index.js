@@ -1,78 +1,36 @@
 require("dotenv").config();
-
-// Express app + cors
 const express = require("express");
-const cors = require("cors");
 const morgan = require("morgan");
+const passport = require("passport");
 const session = require("express-session");
 
-const app = express();
-
 // Config
-app.use(cors());
+const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.set("port", process.env.PORT || 8000);
 app.use(morgan("dev"));
-
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: true,
+    cookie: {
+      secure: true,
+      maxAge: 24 * 60 * 60 * 1000, // One day
+    },
   })
 );
-
-const { ensureAuthenticated, passport } = require("./auth/index");
-
+require("./auth/config");
 app.use(passport.initialize());
 app.use(passport.session());
-
-// Authentication routes
-app.get("/whoami", (req, res, next) => {
-  if (req.isAuthenticated()) return res.status(200).json({ user: req.user });
-  else return res.status(401).json({ messsage: "User is not authenticated" });
+app.use((err, req, res, next) => {
+  // Error handling
+  console.error("Fatal error: " + JSON.stringify(err));
+  next(err);
 });
-
-app.get(
-  "/login",
-  passport.authenticate("saml", { failureRedirect: "/login/fail" }),
-  (req, res) => res.redirect("/")
-);
-
-app.post(
-  "/login/callback",
-  passport.authenticate("saml", { failureRedirect: "/login/fail" }),
-  (req, res) => res.redirect("/")
-);
-
-app.get("/login/fail", (req, res) => res.status(401).send("Login failed"));
-
-app.get("/shibboleth/metadata", (req, res) => {
-  res.type("application/xml");
-  let cert = JSON.parse(`"${process.env.SHIBBOLETH_CERT}"`);
-
-  res
-    .status(200)
-    .send(samlStrategy.generateServiceProviderMetadata(cert, cert));
-});
-
-// Routes
-const coursesRouter = require("./routers/courses");
-const schedulesRouter = require("./routers/schedules");
-const hubsRouter = require("./routers/hubs");
-const sectionsRouter = require("./routers/sections");
-const professorsRouter = require("./routers/professors");
-const ratingsRouter = require("./routers/ratings");
-
-app.use("/courses", coursesRouter);
-app.use("/schedules", schedulesRouter);
-app.use("/hubs", hubsRouter);
-app.use("/sections", sectionsRouter);
-app.use("/professors", professorsRouter);
-app.use("/ratings", ratingsRouter);
+app.use("/", require("./routers/index"));
 
 // Server start
-app.listen(app.get("port"), () => {
-  console.log(`Server on port ${app.get("port")}`);
+app.listen(process.env.PORT || 8000, () => {
+  console.log(`Server on port ${process.env.PORT || 8000}`);
 });

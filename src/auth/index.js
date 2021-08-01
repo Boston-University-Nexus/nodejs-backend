@@ -1,40 +1,36 @@
 const passport = require("passport");
-const SamlStrategy = require("passport-saml").Strategy;
+const { samlStrategy } = require("./config");
+const { Router } = require("express");
+const router = Router();
 
-passport.serializeUser(function (user, done) {
-  done(null, user);
+router.get("/whoami", (req, res, next) => {
+  if (req.isAuthenticated()) return res.status(200).json({ user: req.user });
+  else return res.status(401).json({ messsage: "User is not authenticated" });
 });
 
-passport.deserializeUser(function (user, done) {
-  done(null, user);
-});
-
-const SamlOptions = {
-  callbackUrl: process.env.CALLBACK_URL,
-  entryPoint: process.env.ENTRY_POINT,
-  issuer: process.env.ISSUER,
-  identifierFormat: null,
-  validateInResponseTo: false,
-  disableRequestedAuthnContext: true,
-};
-
-SamlOptions.decryptionPvk = JSON.parse(`"${process.env.SHIBBOLETH_KEY}"`);
-SamlOptions.privateCert = JSON.parse(`"${process.env.SHIBBOLETH_KEY}"`);
-SamlOptions.cert = JSON.parse(`"${process.env.SHIBBOLETH_IDP_CERT}"`);
-
-const samlStrategy = new SamlStrategy(SamlOptions, (profile, done) =>
-  done(null, profile)
+router.get(
+  "/login",
+  passport.authenticate("saml", { failureRedirect: "/login/fail" }),
+  (req, res) => res.redirect("/")
 );
 
-passport.use(samlStrategy);
+router.post(
+  "/login/callback",
+  passport.authenticate("saml", { failureRedirect: "/login/fail" }),
+  (req, res) => res.redirect("/")
+);
 
-// Authentication for routes
-const ensureAuthenticated = (req, res, next) => {
-  if (req.isAuthenticated()) return next();
-  else return res.redirect("/login");
-};
+router.get("/login/fail", (req, res) => res.status(401).send("Login failed"));
+
+router.get("/shibboleth/metadata", (req, res) => {
+  res.type("application/xml");
+  let cert = JSON.parse(`"${process.env.SHIBBOLETH_CERT}"`);
+
+  res
+    .status(200)
+    .send(samlStrategy.generateServiceProviderMetadata(cert, cert));
+});
 
 module.exports = {
-  ensureAuthenticated,
-  passport,
+  authRouter: router,
 };
