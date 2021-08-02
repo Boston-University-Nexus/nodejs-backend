@@ -12,13 +12,13 @@ const PREPRODUCTION = true;
 // MYSQL Connection
 const mysql = require("mysql");
 const connection = mysql.createConnection({
-  host: "localhost",
+  host: process.env.SQL_HOST,
   user: process.env.SQL_USERNAME,
   password: process.env.SQL_PASSWORD,
   database: process.env.SQL_DATABASE,
 });
 
-const queryDB = (query, data_insert) => {
+const { queryDB } = (query, data_insert) => {
   return new Promise((data) =>
     connection.query(query, [data_insert], (err, rows, fields) => {
       if (err) {

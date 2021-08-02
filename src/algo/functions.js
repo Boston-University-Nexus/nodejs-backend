@@ -1,4 +1,4 @@
-const queryDB = require("../database/db");
+const { queryDB } = require("../database/db");
 
 const courseToID = async (str) => {
   const result = await queryDB(

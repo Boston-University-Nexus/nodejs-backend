@@ -2,12 +2,12 @@ const { Router } = require("express");
 const router = Router();
 
 const cors = require("cors");
-const whitelist = ["http://localhost:3000", "http://localhost:8080"];
+
+require("dotenv").config();
+const whitelist = process.env.WHITELIST;
 const corsConfig = {
   credentials: true,
-  origin: (origin, callback) => {
-    callback(null, whitelist.indexOf(origin) !== -1);
-  },
+  origin: (origin, done) => done(null, whitelist === origin),
 };
 
 const coursesRouter = require("./courses");

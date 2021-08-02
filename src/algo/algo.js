@@ -2,7 +2,7 @@ const { Router } = require("express");
 const router = Router();
 
 const fs = require("fs");
-const queryDB = require("../database/db");
+const { queryDB } = require("../database/db");
 const {
   courseToID,
   checkPrereqs,

@@ -1,5 +1,6 @@
 const passport = require("passport");
 const SamlStrategy = require("passport-saml").Strategy;
+const fs = require("fs");
 
 passport.serializeUser(function (user, done) {
   done(null, user);
@@ -18,9 +19,18 @@ const SamlOptions = {
   disableRequestedAuthnContext: true,
 };
 
-SamlOptions.decryptionPvk = JSON.parse(`"${process.env.SHIBBOLETH_KEY}"`);
-SamlOptions.privateCert = JSON.parse(`"${process.env.SHIBBOLETH_KEY}"`);
-SamlOptions.cert = JSON.parse(`"${process.env.SHIBBOLETH_IDP_CERT}"`);
+SamlOptions.decryptionPvk = fs.readFileSync(
+  __dirname + "/../../cert/shib-key.pem",
+  "utf8"
+);
+SamlOptions.privateCert = fs.readFileSync(
+  __dirname + "/../../cert/shib-key.pem",
+  "utf8"
+);
+SamlOptions.cert = fs.readFileSync(
+  __dirname + "/../../cert/shib-idp-cert.pem",
+  "utf8"
+);
 
 const samlStrategy = new SamlStrategy(SamlOptions, (profile, done) =>
   done(null, profile)

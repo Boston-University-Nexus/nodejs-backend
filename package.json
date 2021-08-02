@@ -1,20 +1,23 @@
 {
-  "name": "nodetest",
+  "name": "bunexus_api",
   "version": "1.0.0",
-  "description": "",
+  "description": "A powerful REST API that manages courses, sectios, professors, and mroe.",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.js",
     "start": "node src/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Daniel Melchor",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-mysql-session": "^2.1.6",
+    "express-rate-limit": "^5.3.0",
     "express-session": "^1.17.2",
+    "helmet": "^4.6.0",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "passport": "^0.4.1",

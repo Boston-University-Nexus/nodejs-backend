@@ -1,22 +1,28 @@
 const mysql = require("mysql");
-const connection = mysql.createConnection({
-  host: "localhost",
+const session = require("express-session");
+var MySQLStore = require("express-mysql-session")(session);
+
+var options = {
   user: process.env.SQL_USERNAME,
   password: process.env.SQL_PASSWORD,
   database: process.env.SQL_DATABASE,
-});
+  connectionLimit: process.env.SQL_POOL_LIMIT,
+};
 
-connection.connect((err) => {
-  if (err) console.log("Error connecting to DB", err);
-  else {
-    connection.query("USE sampleDB");
-    console.log("Connected to DB successfuly");
-  }
-});
+if (process.env.INSTANCE_CONNECTION_NAME)
+  options["socketPath"] = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
+if (process.env.SQL_PORT) options["port"] = process.env.SQL_PORT;
+if (process.env.SQL_HOST) options["host"] = process.env.SQL_HOST;
+
+const pool = mysql.createPool(options);
+var sessionStore = new MySQLStore(options, pool);
+
+pool.query(`USE ${process.env.SQL_DATABASE}`);
+console.log("Connected to DB successfuly");
 
 const queryDB = (query, data_insert) => {
   return new Promise((data) =>
-    connection.query(query, data_insert, (err, rows, fields) => {
+    pool.query(query, data_insert, (err, rows, fields) => {
       if (err) {
         console.log(err);
         data(false);
@@ -27,4 +33,4 @@ const queryDB = (query, data_insert) => {
   );
 };
 
-module.exports = queryDB;
+module.exports = { queryDB, sessionStore };

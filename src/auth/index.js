@@ -2,6 +2,7 @@ const passport = require("passport");
 const { samlStrategy } = require("./config");
 const { Router } = require("express");
 const router = Router();
+const fs = require("fs");
 
 router.get("/whoami", (req, res, next) => {
   if (req.isAuthenticated()) return res.status(200).json({ user: req.user });
@@ -24,7 +25,7 @@ router.get("/login/fail", (req, res) => res.status(401).send("Login failed"));
 
 router.get("/shibboleth/metadata", (req, res) => {
   res.type("application/xml");
-  let cert = JSON.parse(`"${process.env.SHIBBOLETH_CERT}"`);
+  let cert = fs.readFileSync(__dirname + "/../../cert/shib-cert.pem", "utf8");
 
   res
     .status(200)
