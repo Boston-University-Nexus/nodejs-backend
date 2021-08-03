@@ -13,7 +13,7 @@ const connection = mysql.createConnection({
   database: process.env.SQL_DATABASE,
 });
 
-const queryDB = (query, data_insert) => {
+const { queryDB } = (query, data_insert) => {
   return new Promise((data) =>
     connection.query(query, data_insert, (err, rows, fields) => {
       if (err) {

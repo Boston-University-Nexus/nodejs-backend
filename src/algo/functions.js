@@ -1,29 +1,48 @@
-const queryDB = require("../database/db");
+const { queryDB } = require("../database/db");
 
-const courseToID = async (str) => {
-  const result = await queryDB(
-    "SELECT course_ID FROM courses WHERE course_code IN (?)",
-    [str.split(",")]
+// Parse an ID to a course (testing)
+const IDToCourse = async (ids) => {
+  var result = await queryDB(
+    "SELECT course_code FROM courses WHERE course_ID IN (?)",
+    [ids]
   );
 
-  let arr = [];
-  for (const row of result) arr.push(row.course_ID);
-
-  return arr;
+  return result.map((a) => a.course_code);
 };
 
-const checkPrereqs = async (target, taken) => {
+// Parse a string or array of strings to course IDS
+const courseToID = async (courses) => {
+  var result;
+  if (courses.length === 0) return [];
+
+  if (typeof courses === "string") {
+    result = await queryDB(
+      "SELECT course_ID FROM courses WHERE course_code IN (?)",
+      [courses.split(",")]
+    );
+  } else {
+    result = await queryDB(
+      "SELECT course_ID FROM courses WHERE course_code IN (?)",
+      [courses]
+    );
+  }
+
+  return result.map((a) => a.course_ID);
+};
+
+// Check a course prereqs (target) to see if user can take it (taken)
+const checkPrereqs = (target, taken) => {
   let prereqs = [];
 
   // Parse prereqs
-  for (const prereq of target.split("|")) prereqs.push(prereq.split("&"));
+  prereqs = target.split("|").map((a) => a.split("&"));
 
   // Calculate completed
   for (const prereq_group of prereqs) {
-    let group_completed = false;
+    let group_completed = true;
     for (const prereq of prereq_group) {
       if (!taken.includes(parseInt(prereq))) {
-        group_completed = true;
+        group_completed = false;
         break;
       }
     }
@@ -34,6 +53,7 @@ const checkPrereqs = async (target, taken) => {
   return false;
 };
 
+// Computs the hub areas the user has to take
 const remainingHubs = async (taken) => {
   var all_hubs = await queryDB(
     "SELECT buhub_ID, buhub_creditsNeeded FROM buhubs"
@@ -58,32 +78,37 @@ const remainingHubs = async (taken) => {
   return remaining;
 };
 
-const bestClassesHubs = async (remaining, all_classes) => {
-  let all_classes_ids = all_classes.map((a) => a.course_ID);
+// Computes the best hub path a user can take given taken courses
+const bestClassesHubs = async (remaining, all_classes, prev_paths) => {
+  prev_paths = prev_paths.flat();
+  all_classes = [...all_classes].filter((a) => !prev_paths.includes(a));
 
   const result = await queryDB(
-    "SELECT course_ID,buhub_ID FROM coursesVShubs WHERE buhub_ID IN (?) AND course_ID IN (?)",
-    [remaining, all_classes_ids]
+    "SELECT coursesVShubs.course_ID, coursesVShubs.buhub_ID, courses.course_number FROM coursesVShubs LEFT JOIN courses ON coursesVShubs.course_ID = courses.course_ID WHERE coursesVShubs.buhub_ID IN (?) AND courses.course_ID IN (?)",
+    [remaining, all_classes]
   );
 
-  let grouped = [];
-  for (const row of result) {
-    let found = false;
-    for (const idx in grouped)
-      if (grouped[idx][0] == row.course_ID) {
-        grouped[idx][1].push(row.buhub_ID);
-        found = true;
-        break;
-      }
+  const res = result.reduce((acc, d) => {
+    const found = acc.find((a) => a.course_ID === d.course_ID);
 
-    if (!found) grouped.push([row.course_ID, [row.buhub_ID]]);
-  }
+    if (!found)
+      acc.push({
+        course_ID: d.course_ID,
+        numHubs: [d.buhub_ID],
+        number: parseInt(d.course_number),
+      });
+    else found.numHubs.push(d.buhub_ID);
 
-  grouped.sort((a, b) => {
-    return b[1].length - a[1].length;
+    return acc;
+  }, []);
+
+  res.sort((a, b) => {
+    const diff = b.numHubs.length - a.numHubs.length;
+    if (diff !== 0) return diff;
+    return a.number - b.number;
   });
 
-  return grouped;
+  return res;
 };
 
 module.exports = {
@@ -91,4 +116,5 @@ module.exports = {
   checkPrereqs,
   remainingHubs,
   bestClassesHubs,
+  IDToCourse,
 };

@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const queryDB = require("../database/db");
+const { queryDB } = require("../database/db");
 
 const { applyQueryAsFilters, errOrRes } = require("./functions");
 
