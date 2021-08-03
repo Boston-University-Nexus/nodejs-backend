@@ -18,7 +18,7 @@ const connection = mysql.createConnection({
   database: process.env.SQL_DATABASE,
 });
 
-const { queryDB } = (query, data_insert) => {
+const queryDB = (query, data_insert) => {
   return new Promise((data) =>
     connection.query(query, [data_insert], (err, rows, fields) => {
       if (err) {
@@ -97,7 +97,7 @@ connection.connect(async (err) => {
 
     if (PREPRODUCTION) {
       await queryDB(
-        "INSERT INTO users (major_ID,user_name,user_password,user_year,user_taken) VALUES (1,'admin','admin','SOPH','CASCS111,CASCS111,CASCS131,CASWR112,CASWR120,CASPH100,CASCC111')"
+        "INSERT INTO users (major_ID, user_buID, user_displayName, user_fname, user_lname,user_email) VALUES (1, 'U29698781', 'Daniel S Melchor','Daniel','Melchor','dmelchor@bu.edu')"
       );
       await queryDB(
         "INSERT INTO schedules (user_ID, schedule_sections) VALUES (1,?)",

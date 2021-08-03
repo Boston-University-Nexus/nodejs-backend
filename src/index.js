@@ -2,10 +2,9 @@ require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
 const passport = require("passport");
-const session = require("express-session");
-const { sessionStore } = require("./database/db");
-
 // Security
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 const limiter = rateLimit({
@@ -17,29 +16,30 @@ const limiter = rateLimit({
     });
   },
 });
+const whitelist = process.env.WHITELIST;
+const corsConfig = {
+  credentials: true,
+  origin: (origin, done) => {
+    return done(null, whitelist === origin);
+  },
+};
 
 // Config
 const app = express();
+app.enable("trust proxy"); // Required for SSL
+app.use((req, res, next) => {
+  res.set("Cache-Control", "no-store");
+  next();
+}); // Required for authentication (disable cache)
 app.use(helmet());
 app.use(limiter);
+app.use(cors(corsConfig));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use(morgan(process.env.PRODUCTION ? "combined" : "dev"));
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: true,
-    saveUninitialized: true,
-    store: sessionStore,
-    cookie: {
-      secure: true,
-      maxAge: 24 * 60 * 60 * 1000, // One day
-    },
-  })
-);
 require("./auth/config");
 app.use(passport.initialize());
-app.use(passport.session());
 app.use((err, req, res, next) => {
   // Error handling
   console.error("Fatal error: " + JSON.stringify(err));
@@ -48,23 +48,27 @@ app.use((err, req, res, next) => {
 app.use("/", require("./routers"));
 
 // Server start with multiple cores
-const cluster = require("cluster");
-const os = require("os");
-const numCpu = os.cpus().length;
-var children = [];
+// const cluster = require("cluster");
+// const os = require("os");
+// const numCpu = os.cpus().length;
+// var children = [];
+// var generateMoreChildren = false;
 
-if (cluster.isMaster) {
-  for (let i = 0; i < numCpu; i++) children.push(cluster.fork());
-  cluster.on("exit", (wker, code, sig) => {
-    children.push(cluster.fork());
-  });
-} else app.listen(process.env.PORT || 8000);
+// if (cluster.isMaster) {
+//   for (let i = 0; i < numCpu; i++) children.push(cluster.fork());
+//   cluster.on("exit", (wker, code, sig) => {
+//     if (generateMoreChildren) children.push(cluster.fork());
+//   });
+// } else app.listen(process.env.PORT || 8000);
 
-// Killing child processes
-const killChilds = () => {
-  console.log("Killing process children.");
-  children.forEach((child) => child.kill());
-};
-process.on("exit", killChilds);
-process.on("SIGINT", killChilds);
-process.on("SIGTERM", killChilds);
+// // Killing child processes
+// const killChilds = () => {
+//   console.log("Killing process children.");
+//   generateMoreChildren = false;
+//   children.forEach((child) => child.kill());
+// };
+// process.on("exit", killChilds);
+// process.on("SIGINT", killChilds);
+// process.on("SIGTERM", killChilds);
+
+app.listen(process.env.PORT || 8000);
