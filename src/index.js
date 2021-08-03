@@ -10,7 +10,7 @@ const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 const limiter = rateLimit({
   windowMs: 60 * 1000,
-  max: 100,
+  max: 70,
   handler: function (req, res) {
     return res.status(429).json({
       error: "You sent too many requests. Please wait a while then try again",
@@ -51,8 +51,20 @@ app.use("/", require("./routers"));
 const cluster = require("cluster");
 const os = require("os");
 const numCpu = os.cpus().length;
+var children = [];
 
 if (cluster.isMaster) {
-  for (let i = 0; i < numCpu; i++) cluster.fork();
-  cluster.on("exit", (wker, code, sig) => cluster.fork());
+  for (let i = 0; i < numCpu; i++) children.push(cluster.fork());
+  cluster.on("exit", (wker, code, sig) => {
+    children.push(cluster.fork());
+  });
 } else app.listen(process.env.PORT || 8000);
+
+// Killing child processes
+const killChilds = () => {
+  console.log("Killing process children.");
+  children.forEach((child) => child.kill());
+};
+process.on("exit", killChilds);
+process.on("SIGINT", killChilds);
+process.on("SIGTERM", killChilds);

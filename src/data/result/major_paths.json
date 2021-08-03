@@ -230,8 +230,8 @@
       "classes": ["CAS AN 351", "CAS AN 521", "CAS LX 250"]
     },
     {
-      "options": {
-        "social track": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS AN 461", "CAS AN 462"]
@@ -246,7 +246,7 @@
             "classes": ["CAS AN 285", "CAS AN 307", "CAS AN 309", "CAS AN 310"]
           }
         ],
-        "biological track": [
+        [
           {
             "required": 2,
             "classes": ["CAS AN 200+ BIOLOG", "SAR HS 369", "CAS BI 200+"]
@@ -272,7 +272,7 @@
             ]
           }
         ]
-      }
+      ]
     }
   ],
   "Anthropology & Religion": [
@@ -809,48 +809,48 @@
       "classes": ["CAS BI 216", "CAS BI 206"]
     },
     {
-      "options": {
-        "Sequence I": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 109", "CAS CH 110"]
           }
         ],
-        "Sequence II": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 111", "CAS CH 112"]
           }
         ],
-        "Sequence III": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 101", "CAS CH 102", "CAS CH 201"]
           }
         ]
-      }
+      ]
     },
     {
-      "options": {
-        "Sequence I": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 203", "CAS CH 214"]
           }
         ],
-        "Sequence II": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 211", "CAS CH 212"]
           }
         ],
-        "Sequence III": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 203", "CAS CH 204", "CAS CH 220"]
           }
         ]
-      }
+      ]
     },
     {
       "required": 1,
@@ -956,26 +956,26 @@
       ]
     },
     {
-      "options": {
-        "Sequence I": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 101", "CAS CH 102"]
           }
         ],
-        "Sequence II": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 109", "CAS CH 110"]
           }
         ],
-        "Sequence III": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 111", "CAS CH 112"]
           }
         ]
-      }
+      ]
     },
     {
       "required": 1,
@@ -1017,32 +1017,32 @@
       ]
     },
     {
-      "options": {
-        "I": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 105", "CAS PY 106"]
           }
         ],
-        "II": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 211", "CAS PY 106"]
           }
         ],
-        "III": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 211", "CAS PY 212"]
           }
         ],
-        "IIII": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 241", "CAS PY 242"]
           }
         ]
-      }
+      ]
     }
   ],
   "Biology with Specialization in Behavioral Biology": [
@@ -1157,8 +1157,8 @@
       ]
     },
     {
-      "options": {
-        "Sequence I": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 101"]
@@ -1168,19 +1168,19 @@
             "classes": ["CAS CH 102", "CAS CH 116"]
           }
         ],
-        "Sequence II": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 109", "CAS CH 110"]
           }
         ],
-        "Sequence III": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 111", "CAS CH 112"]
           }
         ]
-      }
+      ]
     },
     {
       "required": 1,
@@ -1222,32 +1222,32 @@
       ]
     },
     {
-      "options": {
-        "I": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 105", "CAS PY 106"]
           }
         ],
-        "II": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 211", "CAS PY 106"]
           }
         ],
-        "III": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 211", "CAS PY 212"]
           }
         ],
-        "IIII": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 241", "CAS PY 242"]
           }
         ]
-      }
+      ]
     }
   ],
   "Biology with Specialization in Cell Biology, Molecular Biology & Genetics": [
@@ -1327,8 +1327,8 @@
       ]
     },
     {
-      "options": {
-        "Sequence I": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 101"]
@@ -1338,41 +1338,41 @@
             "classes": ["CAS CH 102", "CAS CH 116"]
           }
         ],
-        "Sequence II": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 109", "CAS CH 110"]
           }
         ],
-        "Sequence III": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 111", "CAS CH 112"]
           }
         ]
-      }
+      ]
     },
     {
-      "options": {
-        "Sequence I": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 203", "CAS CH 204", "CAS CH 218"]
           }
         ],
-        "Sequence II": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 203", "CAS CH 214"]
           }
         ],
-        "Sequence III": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 111", "CAS CH 112"]
           }
         ]
-      }
+      ]
     },
     {
       "required": 1,
@@ -1414,32 +1414,32 @@
       ]
     },
     {
-      "options": {
-        "I": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 105", "CAS PY 106"]
           }
         ],
-        "II": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 211", "CAS PY 106"]
           }
         ],
-        "III": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 211", "CAS PY 212"]
           }
         ],
-        "IIII": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 241", "CAS PY 242"]
           }
         ]
-      }
+      ]
     }
   ],
   "Biology with Specialization in Ecology & Conservation Biology": [
@@ -1500,8 +1500,8 @@
       ]
     },
     {
-      "options": {
-        "Sequence I": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 101"]
@@ -1511,19 +1511,19 @@
             "classes": ["CAS CH 102", "CAS CH 116"]
           }
         ],
-        "Sequence II": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 109", "CAS CH 110"]
           }
         ],
-        "Sequence III": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 111", "CAS CH 112"]
           }
         ]
-      }
+      ]
     },
     {
       "required": 1,
@@ -1565,32 +1565,32 @@
       ]
     },
     {
-      "options": {
-        "I": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 105", "CAS PY 106"]
           }
         ],
-        "II": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 211", "CAS PY 106"]
           }
         ],
-        "III": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 211", "CAS PY 212"]
           }
         ],
-        "IIII": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 241", "CAS PY 242"]
           }
         ]
-      }
+      ]
     }
   ],
   "Biology with Specialization in Neurobiology": [
@@ -1687,8 +1687,8 @@
       ]
     },
     {
-      "options": {
-        "Sequence I": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 101"]
@@ -1698,19 +1698,19 @@
             "classes": ["CAS CH 102", "CAS CH 116"]
           }
         ],
-        "Sequence II": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 109", "CAS CH 110"]
           }
         ],
-        "Sequence III": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 111", "CAS CH 112"]
           }
         ]
-      }
+      ]
     },
     {
       "required": 1,
@@ -1752,32 +1752,32 @@
       ]
     },
     {
-      "options": {
-        "I": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 105", "CAS PY 106"]
           }
         ],
-        "II": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 211", "CAS PY 106"]
           }
         ],
-        "III": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 211", "CAS PY 212"]
           }
         ],
-        "IIII": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 241", "CAS PY 242"]
           }
         ]
-      }
+      ]
     }
   ],
   "Biomedical Engineering": [
@@ -2502,8 +2502,8 @@
       "classes": ["CAS MA 121", "CAS MA 123"]
     },
     {
-      "options": {
-        "Retail Operations and Analytics": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["QST AC 347"]
@@ -2526,7 +2526,7 @@
             ]
           }
         ],
-        "Retail Design": [
+        [
           {
             "required": -1,
             "classes": ["QST AC 347", "QST SI 451"]
@@ -2556,7 +2556,7 @@
             ]
           }
         ]
-      }
+      ]
     }
   ],
   "Business Administration & Management (Strategy)": [
@@ -2688,66 +2688,90 @@
   "Chemistry": [
     {
       "options": [
-        {
-          "required": -1,
-          "classes": ["CAS CH 111", "CAS CH 112"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS CH 109", "CAS CH 110"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS CH 101", "CAS CH 102", "CAS CH 201"]
-        }
+        [
+          {
+            "required": -1,
+            "classes": ["CAS CH 111", "CAS CH 112"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS CH 109", "CAS CH 110"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS CH 101", "CAS CH 102", "CAS CH 201"]
+          }
+        ]
       ]
     },
     {
       "options": [
-        {
-          "required": -1,
-          "classes": ["CAS MA 123", "CAS MA 124"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS MA 127"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS MA 129"]
-        }
+        [
+          {
+            "required": -1,
+            "classes": ["CAS MA 123", "CAS MA 124"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS MA 127"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS MA 129"]
+          }
+        ]
       ]
     },
     {
       "options": [
-        {
-          "required": -1,
-          "classes": ["CAS CH 225"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS MA 225"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS CS MA 230"]
-        }
+        [
+          {
+            "required": -1,
+            "classes": ["CAS CH 225"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS MA 225"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS CS MA 230"]
+          }
+        ]
       ]
     },
     {
       "options": [
-        {
-          "required": -1,
-          "classes": ["CAS PY 211", "CAS PY 212"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS PY 241", "CAS PY 242"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS PY 251", "CAS PY 252"]
-        }
+        [
+          {
+            "required": -1,
+            "classes": ["CAS PY 211", "CAS PY 212"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS PY 241", "CAS PY 242"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS PY 251", "CAS PY 252"]
+          }
+        ]
       ]
     },
     {
@@ -2763,8 +2787,8 @@
       "classes": ["CAS CH 351", "CAS CH 352", "CAS CH 421"]
     },
     {
-      "options": {
-        "Option A (Intensive)": [
+      "options": [
+        [
           {
             "required": 1,
             "classes": ["CAS CH 401+"]
@@ -2775,78 +2799,102 @@
             "exclude": ["CAS CH 402", "CAS CH 491", "CAS CH 492"]
           }
         ],
-        "Option B": [
+        [
           {
             "required": 1,
             "classes": ["CAS CH 400+"]
           }
         ]
-      }
+      ]
     }
   ],
   "Chemistry: Biochemistry": [
     {
       "options": [
-        {
-          "required": -1,
-          "classes": ["CAS CH 111", "CAS CH 112"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS CH 109", "CAS CH 110"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS CH 101", "CAS CH 102", "CAS CH 201"]
-        }
+        [
+          {
+            "required": -1,
+            "classes": ["CAS CH 111", "CAS CH 112"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS CH 109", "CAS CH 110"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS CH 101", "CAS CH 102", "CAS CH 201"]
+          }
+        ]
       ]
     },
     {
       "options": [
-        {
-          "required": -1,
-          "classes": ["CAS MA 123", "CAS MA 124"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS MA 127"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS MA 129"]
-        }
+        [
+          {
+            "required": -1,
+            "classes": ["CAS MA 123", "CAS MA 124"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS MA 127"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS MA 129"]
+          }
+        ]
       ]
     },
     {
       "options": [
-        {
-          "required": -1,
-          "classes": ["CAS CH 225"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS MA 225"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS CS MA 230"]
-        }
+        [
+          {
+            "required": -1,
+            "classes": ["CAS CH 225"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS MA 225"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS CS MA 230"]
+          }
+        ]
       ]
     },
     {
       "options": [
-        {
-          "required": -1,
-          "classes": ["CAS PY 211", "CAS PY 212"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS PY 241", "CAS PY 242"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS PY 251", "CAS PY 252"]
-        }
+        [
+          {
+            "required": -1,
+            "classes": ["CAS PY 211", "CAS PY 212"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS PY 241", "CAS PY 242"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS PY 251", "CAS PY 252"]
+          }
+        ]
       ]
     },
     {
@@ -2863,86 +2911,114 @@
     },
     {
       "options": [
-        {
-          "required": -1,
-          "classes": [
-            "CAS BI 118",
-            "CAS BI 108",
-            "CAS BI 213",
-            "CAS BI 203",
-            "CAS CH 422"
-          ]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS CS 399+"]
-        }
+        [
+          {
+            "required": -1,
+            "classes": [
+              "CAS BI 118",
+              "CAS BI 108",
+              "CAS BI 213",
+              "CAS BI 203",
+              "CAS CH 422"
+            ]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS CS 399+"]
+          }
+        ]
       ]
     }
   ],
   "Chemistry: Concetration in Teaching": [
     {
       "options": [
-        {
-          "required": -1,
-          "classes": ["CAS CH 111", "CAS CH 112"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS CH 109", "CAS CH 110"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS CH 101", "CAS CH 102", "CAS CH 201"]
-        }
+        [
+          {
+            "required": -1,
+            "classes": ["CAS CH 111", "CAS CH 112"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS CH 109", "CAS CH 110"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS CH 101", "CAS CH 102", "CAS CH 201"]
+          }
+        ]
       ]
     },
     {
       "options": [
-        {
-          "required": -1,
-          "classes": ["CAS MA 123", "CAS MA 124"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS MA 127"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS MA 129"]
-        }
+        [
+          {
+            "required": -1,
+            "classes": ["CAS MA 123", "CAS MA 124"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS MA 127"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS MA 129"]
+          }
+        ]
       ]
     },
     {
       "options": [
-        {
-          "required": -1,
-          "classes": ["CAS CH 225"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS MA 225"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS CS MA 230"]
-        }
+        [
+          {
+            "required": -1,
+            "classes": ["CAS CH 225"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS MA 225"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS CS MA 230"]
+          }
+        ]
       ]
     },
     {
       "options": [
-        {
-          "required": -1,
-          "classes": ["CAS PY 211", "CAS PY 212"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS PY 241", "CAS PY 242"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS PY 251", "CAS PY 252"]
-        }
+        [
+          {
+            "required": -1,
+            "classes": ["CAS PY 211", "CAS PY 212"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS PY 241", "CAS PY 242"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS PY 251", "CAS PY 252"]
+          }
+        ]
       ]
     },
     {
@@ -3018,28 +3094,32 @@
     },
     {
       "options": [
-        {
-          "required": 1,
-          "classes": ["CAS LX 249+"]
-        },
-        {
-          "required": 1,
-          "choose": 1,
-          "classes": [
-            "LY",
-            "XL",
-            "LC",
-            "LG",
-            "LH",
-            "LN",
-            "LJ",
-            "LK",
-            "LZ",
-            "LR",
-            "LT",
-            "TL"
-          ]
-        }
+        [
+          {
+            "required": 1,
+            "classes": ["CAS LX 249+"]
+          }
+        ],
+        [
+          {
+            "required": 1,
+            "choose": 1,
+            "classes": [
+              "LY",
+              "XL",
+              "LC",
+              "LG",
+              "LH",
+              "LN",
+              "LJ",
+              "LK",
+              "LZ",
+              "LR",
+              "LT",
+              "TL"
+            ]
+          }
+        ]
       ]
     },
     {
@@ -3175,14 +3255,18 @@
     },
     {
       "options": [
-        {
-          "required": -1,
-          "classes": ["CAS CL 211", "CAS CL 212", "CAS CL 351"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS CL 261", "CAS CL 262", "CAS CL 391"]
-        }
+        [
+          {
+            "required": -1,
+            "classes": ["CAS CL 211", "CAS CL 212", "CAS CL 351"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS CL 261", "CAS CL 262", "CAS CL 391"]
+          }
+        ]
       ]
     },
     {
@@ -3786,18 +3870,24 @@
     },
     {
       "options": [
-        {
-          "required": -1,
-          "classes": ["CAS MA 123", "CAS MA 124"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS MA 127"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS MA 129"]
-        }
+        [
+          {
+            "required": -1,
+            "classes": ["CAS MA 123", "CAS MA 124"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS MA 127"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS MA 129"]
+          }
+        ]
       ]
     },
     {
@@ -3821,8 +3911,8 @@
       ]
     },
     {
-      "options": {
-        "Ecosystems Group": [
+      "options": [
+        [
           {
             "required": 1,
             "classes": [
@@ -3871,35 +3961,39 @@
           },
           {
             "options": [
-              {
-                "required": 2,
-                "classes": [
-                  "CAS EE 300",
-                  "CAS EE 305",
-                  "CAS EE 310",
-                  "CAS EE 317",
-                  "CAS EE 331",
-                  "CAS EE 351",
-                  "CAS EE 371",
-                  "CAS EE 375"
-                ]
-              },
-              {
-                "required": 2,
-                "classes": [
-                  "CAS EE 302",
-                  "CAS EE 365",
-                  "CAS EE 375",
-                  "CAS EE 420",
-                  "CAS EE 444",
-                  "CAS EE 445",
-                  "CAS EE 446"
-                ]
-              }
+              [
+                {
+                  "required": 2,
+                  "classes": [
+                    "CAS EE 300",
+                    "CAS EE 305",
+                    "CAS EE 310",
+                    "CAS EE 317",
+                    "CAS EE 331",
+                    "CAS EE 351",
+                    "CAS EE 371",
+                    "CAS EE 375"
+                  ]
+                }
+              ],
+              [
+                {
+                  "required": 2,
+                  "classes": [
+                    "CAS EE 302",
+                    "CAS EE 365",
+                    "CAS EE 375",
+                    "CAS EE 420",
+                    "CAS EE 444",
+                    "CAS EE 445",
+                    "CAS EE 446"
+                  ]
+                }
+              ]
             ]
           }
         ],
-        "Earth & Climate Group": [
+        [
           {
             "required": 1,
             "classes": [
@@ -3940,35 +4034,39 @@
           },
           {
             "options": [
-              {
-                "required": 2,
-                "classes": [
-                  "CAS EE 302",
-                  "CAS EE 365",
-                  "CAS EE 375",
-                  "CAS EE 420",
-                  "CAS EE 444",
-                  "CAS EE 445",
-                  "CAS EE 446"
-                ]
-              },
-              {
-                "required": 2,
-                "classes": [
-                  "CAS BI 306",
-                  "CAS EE 307",
-                  "CAS EE 375",
-                  "CAS EE 423",
-                  "CAS EE 443",
-                  "CAS EE 456",
-                  "CAS EE 475",
-                  "CAS EE 483"
-                ]
-              }
+              [
+                {
+                  "required": 2,
+                  "classes": [
+                    "CAS EE 302",
+                    "CAS EE 365",
+                    "CAS EE 375",
+                    "CAS EE 420",
+                    "CAS EE 444",
+                    "CAS EE 445",
+                    "CAS EE 446"
+                  ]
+                }
+              ],
+              [
+                {
+                  "required": 2,
+                  "classes": [
+                    "CAS BI 306",
+                    "CAS EE 307",
+                    "CAS EE 375",
+                    "CAS EE 423",
+                    "CAS EE 443",
+                    "CAS EE 456",
+                    "CAS EE 475",
+                    "CAS EE 483"
+                  ]
+                }
+              ]
             ]
           }
         ],
-        "Earth Observations Group": [
+        [
           {
             "required": 1,
             "classes": [
@@ -4004,36 +4102,40 @@
           },
           {
             "options": [
-              {
-                "required": 2,
-                "classes": [
-                  "CAS BI 306",
-                  "CAS EE 307",
-                  "CAS EE 375",
-                  "CAS EE 423",
-                  "CAS EE 443",
-                  "CAS EE 456",
-                  "CAS EE 475",
-                  "CAS EE 483"
-                ]
-              },
-              {
-                "required": 2,
-                "classes": [
-                  "CAS EE 300",
-                  "CAS EE 305",
-                  "CAS EE 310",
-                  "CAS EE 317",
-                  "CAS EE 331",
-                  "CAS EE 351",
-                  "CAS EE 371",
-                  "CAS EE 375"
-                ]
-              }
+              [
+                {
+                  "required": 2,
+                  "classes": [
+                    "CAS BI 306",
+                    "CAS EE 307",
+                    "CAS EE 375",
+                    "CAS EE 423",
+                    "CAS EE 443",
+                    "CAS EE 456",
+                    "CAS EE 475",
+                    "CAS EE 483"
+                  ]
+                }
+              ],
+              [
+                {
+                  "required": 2,
+                  "classes": [
+                    "CAS EE 300",
+                    "CAS EE 305",
+                    "CAS EE 310",
+                    "CAS EE 317",
+                    "CAS EE 331",
+                    "CAS EE 351",
+                    "CAS EE 371",
+                    "CAS EE 375"
+                  ]
+                }
+              ]
             ]
           }
         ]
-      }
+      ]
     }
   ],
   "Economics": [
@@ -4058,22 +4160,30 @@
     },
     {
       "options": [
-        {
-          "required": -1,
-          "classes": ["CAS EC 203"]
-        },
-        {
-          "required": -1,
-          "classes": ["QST QM 221"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS MA 115"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS MA 213"]
-        }
+        [
+          {
+            "required": -1,
+            "classes": ["CAS EC 203"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["QST QM 221"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS MA 115"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS MA 213"]
+          }
+        ]
       ]
     },
     {
@@ -4084,14 +4194,18 @@
   "Economics & Mathematics": [
     {
       "options": [
-        {
-          "required": -1,
-          "classes": ["CAS MA 123", "CAS MA 124"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS MA 129"]
-        }
+        [
+          {
+            "required": -1,
+            "classes": ["CAS MA 123", "CAS MA 124"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS MA 129"]
+          }
+        ]
       ]
     },
     {
@@ -4526,20 +4640,24 @@
     },
     {
       "options": [
-        {
-          "required": 1,
-          "classes": [
-            "CAS LF 500",
-            "CAS LF 502",
-            "CAS LF 503",
-            "CAS LF 504",
-            "CAS LF 506"
-          ]
-        },
-        {
-          "required": 1,
-          "classes": ["CAS LX 299+"]
-        }
+        [
+          {
+            "required": 1,
+            "classes": [
+              "CAS LF 500",
+              "CAS LF 502",
+              "CAS LF 503",
+              "CAS LF 504",
+              "CAS LF 506"
+            ]
+          }
+        ],
+        [
+          {
+            "required": 1,
+            "classes": ["CAS LX 299+"]
+          }
+        ]
       ]
     },
     {
@@ -4603,14 +4721,18 @@
     },
     {
       "options": [
-        {
-          "required": -1,
-          "classes": ["CAS PY 211", "CAS PY 212"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS PY 251", "CAS PY 252"]
-        }
+        [
+          {
+            "required": -1,
+            "classes": ["CAS PY 211", "CAS PY 212"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS PY 251", "CAS PY 252"]
+          }
+        ]
       ]
     },
     {
@@ -4721,14 +4843,18 @@
     },
     {
       "options": [
-        {
-          "required": 2,
-          "classes": ["CFA AR 581", "CFA AR 582", "CFA AR 589"]
-        },
-        {
-          "required": -1,
-          "classes": ["CAS CS 103"]
-        }
+        [
+          {
+            "required": 2,
+            "classes": ["CFA AR 581", "CFA AR 582", "CFA AR 589"]
+          }
+        ],
+        [
+          {
+            "required": -1,
+            "classes": ["CAS CS 103"]
+          }
+        ]
       ]
     },
     {
@@ -4841,140 +4967,140 @@
   ],
   "Neuroscience": [
     {
-      "options": {
-        "standard track": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 101", "CAS CH 102"]
           }
         ],
-        "alt track 1": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 101", "CAS CH 116"]
           }
         ],
-        "alt track 2": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 109 and CAS CH 110"]
           }
         ],
-        "alt track 3": [
+        [
           {
             "required": -1,
             "classes": ["CAS CH 111 and CAS CH 112"]
           }
         ]
-      }
+      ]
     },
     {
-      "options": {
-        "standard track": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 105", "CAS PY 106"]
           }
         ],
-        "alt track 1": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 211", "CAS PY 212"]
           }
         ],
-        "alt track 2": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 241", "CAS PY 242"]
           }
         ],
-        "alt track 3": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 251", "CAS PY 252"]
           }
         ]
-      }
+      ]
     },
     {
-      "options": {
-        "standard track": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS MA 123", "CAS MA 124"]
           }
         ],
-        "alt track": [
+        [
           {
             "required": -1,
             "classes": ["CAS MA 121", "CAS MA 122"]
           }
         ]
-      }
+      ]
     },
     {
-      "options": {
-        "standard track": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS NE 212"]
           }
         ],
-        "alt track 1": [
+        [
           {
             "required": -1,
             "classes": ["CAS MA 115", "CAS MA 116"]
           }
         ],
-        "alt track 2": [
+        [
           {
             "required": -1,
             "classes": ["CAS MA 213", "CAS MA 214"]
           }
         ]
-      }
+      ]
     },
     {
       "required": -1,
       "classes": ["CAS NE 101", "CAS NE 202", "CAS NE 204"]
     },
     {
-      "options": {
-        "standard pick": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS NE 102"]
           }
         ],
-        "alt pick": [
+        [
           {
             "required": -1,
             "classes": ["CAS NE 116"]
           }
         ]
-      }
+      ]
     },
     {
-      "options": {
-        "standard pick": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS NE 203"]
           }
         ],
-        "alt pick 1": [
+        [
           {
             "required": -1,
             "classes": ["CAS NE 218"]
           }
         ],
-        "alt pick 2": [
+        [
           {
             "required": -1,
             "classes": ["CAS BI 325"]
           }
         ]
-      }
+      ]
     },
     {
       "required": 3,
@@ -5076,8 +5202,8 @@
       ]
     },
     {
-      "options": {
-        "neuro + cog": [
+      "options": [
+        [
           {
             "required": 1,
             "classes": [
@@ -5116,7 +5242,7 @@
             ]
           }
         ],
-        "neuro + comp": [
+        [
           {
             "required": 1,
             "classes": [
@@ -5154,7 +5280,7 @@
             ]
           }
         ],
-        "cog + comp": [
+        [
           {
             "required": 1,
             "classes": [
@@ -5191,7 +5317,7 @@
             ]
           }
         ]
-      }
+      ]
     }
   ],
   "Philosophy": [
@@ -5272,36 +5398,36 @@
   ],
   "Physics": [
     {
-      "options": {
-        "standard track": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS MA 123", "CAS MA 124"]
           }
         ],
-        "alt track": [
+        [
           {
             "required": -1,
             "classes": ["CAS MA 127"]
           }
         ]
-      }
+      ]
     },
     {
-      "options": {
-        "standard track": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 251", "CAS PY 252", "CAS PY 351"]
           }
         ],
-        "alt track": [
+        [
           {
             "required": -1,
             "classes": ["CAS PY 211", "CAS PY 212", "CAS PY 313"]
           }
         ]
-      }
+      ]
     },
     {
       "required": -1,
@@ -5332,8 +5458,8 @@
       "classes": ["CAS MA 200+"]
     },
     {
-      "options": {
-        "cas track": [
+      "options": [
+        [
           {
             "required": 1,
             "classes": ["CAS * 300+"]
@@ -5343,13 +5469,13 @@
             "classes": ["CAS * 200+"]
           }
         ],
-        "eng track": [
+        [
           {
             "required": 3,
             "classes": ["ENG * 300+"]
           }
         ]
-      }
+      ]
     }
   ],
   "Political Science": [
@@ -5391,8 +5517,8 @@
       ]
     },
     {
-      "options": {
-        "b heavy": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS PS 370", "CAS PS 371"]
@@ -5442,7 +5568,7 @@
             ]
           }
         ],
-        "a heavy": [
+        [
           {
             "required": 1,
             "classes": ["CAS PS 370", "CAS PS 371"]
@@ -5488,7 +5614,7 @@
             ]
           }
         ],
-        "a exclusive": [
+        [
           {
             "required": 3,
             "classes": [
@@ -5530,7 +5656,7 @@
             ]
           }
         ]
-      }
+      ]
     },
     {
       "required": 1,
@@ -5539,14 +5665,14 @@
   ],
   "Religion": [
     {
-      "options": {
-        "standard track": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS RN 103", "CAS RN 104"]
           }
         ],
-        "alt track 1": [
+        [
           {
             "required": 1,
             "classes": ["CAS RN 103", "CAS RN 104", "CAS RN 105"]
@@ -5564,7 +5690,7 @@
             ]
           }
         ],
-        "alt track 2": [
+        [
           {
             "required": -1,
             "classes": ["CAS CC 101", "CAS CC 102"]
@@ -5582,7 +5708,7 @@
             ]
           }
         ],
-        "alt track 3": [
+        [
           {
             "required": 1,
             "classes": ["CAS RN 103", "CAS RN 104", "CAS RN 105"]
@@ -5592,7 +5718,7 @@
             "classes": ["CAS CC 101", "CAS CC 102"]
           }
         ]
-      }
+      ]
     },
     {
       "required": 1,
@@ -5625,14 +5751,14 @@
       "classes": ["CAS LF 400+"]
     },
     {
-      "options": {
-        "track 1": [
+      "options": [
+        [
           {
             "required": -1,
             "classes": ["CAS LF 350", "CAS LF 351"]
           }
         ],
-        "track 2": [
+        [
           {
             "required": -1,
             "classes": ["CAS LF 350"]
@@ -5642,7 +5768,7 @@
             "classes": ["CAS LF 301-349"]
           }
         ],
-        "track 3": [
+        [
           {
             "required": -1,
             "classes": ["CAS LF 351"]
@@ -5652,7 +5778,7 @@
             "classes": ["CAS LF 301-349"]
           }
         ]
-      }
+      ]
     }
   ],
   "Italian Studies": [
@@ -5701,26 +5827,26 @@
   ],
   "Sociology": [
     {
-      "options": {
-        "standard track": [
+      "options": [
+        [
           {
             "required": 1,
             "classes": ["CAS SO 100"]
           }
         ],
-        "alt track 1": [
+        [
           {
             "required": 2,
             "classes": ["CGS SS 101", "CGS SS 102"]
           }
         ],
-        "alt track 2": [
+        [
           {
             "required": 2,
             "classes": ["CGS CC 112", "CGS CC 211"]
           }
         ]
-      }
+      ]
     },
     {
       "required": 3,
@@ -5821,8 +5947,8 @@
       "classes": ["CAS LG 220+"]
     },
     {
-      "options": {
-        "standard": [
+      "options": [
+        [
           {
             "required": 1,
             "classes": [
@@ -5842,13 +5968,13 @@
             ]
           }
         ],
-        "alt": [
+        [
           {
             "required": 2,
             "classes": ["CAS CC 101", "CAS CC 102"]
           }
         ]
-      }
+      ]
     }
   ]
 }
