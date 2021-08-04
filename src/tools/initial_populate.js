@@ -11,6 +11,7 @@ const PREPRODUCTION = true;
 
 // MYSQL Connection
 const mysql = require("mysql");
+const { v4 } = require("uuid");
 const connection = mysql.createConnection({
   host: process.env.SQL_HOST,
   user: process.env.SQL_USERNAME,
@@ -96,8 +97,9 @@ connection.connect(async (err) => {
     }
 
     if (PREPRODUCTION) {
+      const unique_user_key = "1d48ab9b-2aa3-4580-bfe9-1d896a75fcd7";
       await queryDB(
-        "INSERT INTO users (major_ID, user_buID, user_displayName, user_fname, user_lname,user_email) VALUES (1, 'U29698781', 'Daniel S Melchor','Daniel','Melchor','dmelchor@bu.edu')"
+        `INSERT INTO users (major_ID, user_buID, user_displayName, user_fname, user_lname,user_email,user_key) VALUES (1, 'U29698781', 'Daniel S Melchor','Daniel','Melchor','dmelchor@bu.edu','${unique_user_key}')`
       );
       await queryDB(
         "INSERT INTO schedules (user_ID, schedule_sections) VALUES (1,?)",

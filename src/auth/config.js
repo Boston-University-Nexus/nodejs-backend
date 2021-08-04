@@ -57,7 +57,7 @@ const genToken = (user) => {
   const jwt_token = jwt.sign(
     {
       iss: "BUNexus",
-      sub: user.user_buID,
+      sub: user,
       iat: new Date().getTime(),
       exp: new Date().getTime() + 1000 * 60 * 60,
     },

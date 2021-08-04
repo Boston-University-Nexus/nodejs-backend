@@ -18,16 +18,22 @@ pool.query(`USE ${process.env.SQL_DATABASE}`);
 console.log("Connected to DB successfuly");
 
 const queryDB = (query, data_insert) => {
-  return new Promise((data) =>
-    pool.query(query, data_insert, (err, rows, fields) => {
-      if (err) {
-        console.log(err);
-        data(false);
-      } else {
-        return data(rows);
-      }
-    })
-  );
+  return new Promise((resolve, reject) => {
+    pool.getConnection((err, conn) => {
+      if (!err) {
+        return conn.query(query, data_insert, (err, rows, fields) => {
+          if (err) {
+            console.log(err);
+            conn.release();
+            reject(false);
+          } else {
+            conn.release();
+            resolve(rows);
+          }
+        });
+      } else console.log(err);
+    });
+  });
 };
 
 module.exports = { queryDB };
