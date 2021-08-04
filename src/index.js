@@ -48,27 +48,25 @@ app.use((err, req, res, next) => {
 app.use("/", require("./routers"));
 
 // Server start with multiple cores
-// const cluster = require("cluster");
-// const os = require("os");
-// const numCpu = os.cpus().length;
-// var children = [];
-// var generateMoreChildren = false;
+const cluster = require("cluster");
+const os = require("os");
+const numCpu = os.cpus().length;
+var children = [];
+var generateMoreChildren = false;
 
-// if (cluster.isMaster) {
-//   for (let i = 0; i < numCpu; i++) children.push(cluster.fork());
-//   cluster.on("exit", (wker, code, sig) => {
-//     if (generateMoreChildren) children.push(cluster.fork());
-//   });
-// } else app.listen(process.env.PORT || 8000);
+if (cluster.isMaster) {
+  for (let i = 0; i < numCpu; i++) children.push(cluster.fork());
+  cluster.on("exit", (wker, code, sig) => {
+    if (generateMoreChildren) children.push(cluster.fork());
+  });
+} else app.listen(process.env.PORT || 8000);
 
-// // Killing child processes
-// const killChilds = () => {
-//   console.log("Killing process children.");
-//   generateMoreChildren = false;
-//   children.forEach((child) => child.kill());
-// };
-// process.on("exit", killChilds);
-// process.on("SIGINT", killChilds);
-// process.on("SIGTERM", killChilds);
-
-app.listen(process.env.PORT || 8000);
+// Killing child processes
+const killChilds = () => {
+  console.log("Killing process children.");
+  generateMoreChildren = false;
+  children.forEach((child) => child.kill());
+};
+process.on("exit", killChilds);
+process.on("SIGINT", killChilds);
+process.on("SIGTERM", killChilds);
