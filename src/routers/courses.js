@@ -7,6 +7,7 @@ const router = Router();
 
 router.get("/", async (req, res) => {
   const allowed_queries = [
+    "course_ID",
     "course_code",
     "course_college",
     "course_department",
@@ -20,10 +21,7 @@ router.get("/", async (req, res) => {
 
   const { page } = req.query;
   let [params, query] = applyQueryAsFilters(req.query, allowed_queries, page);
-  const result = await queryDB(
-    "SELECT * FROM courses WHERE 1=1" + query,
-    params
-  );
+  var result = await queryDB("SELECT * FROM courses WHERE 1=1" + query, params);
 
   errOrRes(
     res,

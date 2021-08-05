@@ -9,7 +9,7 @@ const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 const limiter = rateLimit({
   windowMs: 60 * 1000,
-  max: 70,
+  max: process.env.PRODUCTION ? 70 : 10000000,
   handler: function (req, res) {
     return res.status(429).json({
       error: "You sent too many requests. Please wait a while then try again",

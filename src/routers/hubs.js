@@ -10,8 +10,8 @@ router.get("/", async (req, res) => {
     let result = await queryDB("SELECT * FROM buhubs");
     errOrRes(res, result, 400, 200, "No hubs found.", result);
   } else {
-    const allowed_queries = ["course_code", "buhub_ID"];
-    const addOns = ["courses.", "buhubs."];
+    const allowed_queries = ["course_code", "course_ID", "buhub_ID"];
+    const addOns = ["courses.", "courses.", "buhubs."];
     const { page } = req.query;
 
     let [params, query] = applyQueryAsFilters(
