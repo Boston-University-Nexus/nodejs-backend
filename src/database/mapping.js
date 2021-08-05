@@ -4,9 +4,9 @@ const mapping = [
   ["buhub", "buhubs", "buhub_ID, buhub_name, buhub_creditsNeeded"],
   ["professors", "professors", "professor_ID, professor_name"],
   [
-    "classes",
+    "classes_parsed",
     "courses",
-    "course_ID, course_title, course_code, course_college, course_department, course_number, course_semester, course_prereqs,course_coreqs,course_description,course_credits",
+    "course_ID, course_title, course_code, course_college, course_department, course_number, course_semester, course_prereqs,course_coreqs,course_description,course_credits,course_prereqs_ids",
   ],
   [
     "sections",

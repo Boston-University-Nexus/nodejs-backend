@@ -8,6 +8,7 @@ const router = Router();
 router.get("/", async (req, res) => {
   const allowed_queries = [
     "course_code",
+    "course_ID",
     "course_college",
     "course_department",
     "course_number",
@@ -21,6 +22,7 @@ router.get("/", async (req, res) => {
     "professor_name_contains",
   ];
   const addOns = [
+    "courses.",
     "courses.",
     "courses.",
     "courses.",
