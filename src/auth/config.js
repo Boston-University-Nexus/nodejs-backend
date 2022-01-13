@@ -7,14 +7,8 @@ const SamlStrategy = require("passport-saml").Strategy;
 // Jwt imports
 const jwt = require("jsonwebtoken");
 var JWTStrategy = require("passport-jwt").Strategy;
-const PRIV_KEY = fs.readFileSync(
-  __dirname + "/../../cert/jwtRS256.key",
-  "utf8"
-);
-const PUB_KEY = fs.readFileSync(
-  __dirname + "/../../cert/jwtRS256.key.pub",
-  "utf8"
-);
+const PRIV_KEY = fs.readFileSync(__dirname + "/../../cert/priv.pem", "utf8");
+const PUB_KEY = fs.readFileSync(__dirname + "/../../cert/pub.pem", "utf8");
 
 passport.serializeUser(function (user, done) {
   done(null, user);
@@ -34,22 +28,22 @@ const SamlOptions = {
   disableRequestedAuthnContext: true,
 };
 
-SamlOptions.decryptionPvk = fs.readFileSync(
-  __dirname + "/../../cert/shib-key.pem",
-  "utf8"
-);
-SamlOptions.privateCert = fs.readFileSync(
-  __dirname + "/../../cert/shib-key.pem",
-  "utf8"
-);
-SamlOptions.cert = fs.readFileSync(
-  __dirname + "/../../cert/shib-idp-cert.pem",
-  "utf8"
-);
+// SamlOptions.decryptionPvk = fs.readFileSync(
+//   __dirname + "/../../cert/shib-key.pem",
+//   "utf8"
+// );
+// SamlOptions.privateCert = fs.readFileSync(
+//   __dirname + "/../../cert/shib-key.pem",
+//   "utf8"
+// );
+// SamlOptions.cert = fs.readFileSync(
+//   __dirname + "/../../cert/shib-idp-cert.pem",
+//   "utf8"
+// );
 
-const samlStrategy = new SamlStrategy(SamlOptions, async (profile, done) =>
-  done(null, profile)
-);
+// const samlStrategy = new SamlStrategy(SamlOptions, async (profile, done) =>
+//   done(null, profile)
+// );
 
 // JWT AUTHENTICATION
 const genToken = (user) => {
@@ -84,8 +78,12 @@ const jwtStrategy = new JWTStrategy(options, (jwt_payload, done) => {
   return done(null, jwt_payload.sub);
 });
 
-passport.use(samlStrategy);
+// passport.use(samlStrategy);
 passport.use(jwtStrategy);
 
 // Exports
-module.exports = { samlStrategy, jwtStrategy, genToken };
+module.exports = {
+  // samlStrategy,
+  jwtStrategy,
+  genToken,
+};

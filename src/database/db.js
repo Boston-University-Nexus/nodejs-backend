@@ -7,6 +7,7 @@ var options = {
   connectionLimit: process.env.SQL_POOL_LIMIT,
 };
 
+// Pool vs default for testing
 if (process.env.INSTANCE_CONNECTION_NAME)
   options["socketPath"] = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
 if (process.env.SQL_PORT) options["port"] = process.env.SQL_PORT;
@@ -17,6 +18,7 @@ const pool = mysql.createPool(options);
 pool.query(`USE ${process.env.SQL_DATABASE}`);
 console.log("Connected to DB successfuly");
 
+// Main helper DB method
 const queryDB = (query, data_insert) => {
   return new Promise((resolve, reject) => {
     pool.getConnection((err, conn) => {

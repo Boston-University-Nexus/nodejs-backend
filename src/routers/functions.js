@@ -9,6 +9,7 @@ const applyQueryAsFilters = (query, allowed_queries, page, addOns) => {
 
   for (const idx in allowed_queries) {
     if (query[allowed_queries[idx]]) {
+      // Apply different filters
       if (
         allowed_queries[idx].includes("contains") &&
         query[allowed_queries[idx]] != ""
@@ -30,6 +31,7 @@ const applyQueryAsFilters = (query, allowed_queries, page, addOns) => {
 };
 
 const errOrRes = (res, result, errorCode, successCode, errMsg, successMsg) => {
+  // Error checking middleware
   if (result && (result.affectedRows > 0 || result.length > 0))
     res.status(successCode).send(successMsg);
   else res.status(errorCode).json({ error: errMsg });

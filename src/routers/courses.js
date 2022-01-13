@@ -6,6 +6,7 @@ const { applyQueryAsFilters, errOrRes } = require("./functions");
 const router = Router();
 
 router.get("/", async (req, res) => {
+  // General course information with allowed queries
   const allowed_queries = [
     "course_ID",
     "course_code",

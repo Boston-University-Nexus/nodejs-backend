@@ -27,6 +27,7 @@ const queryDB = (query, data_insert) => {
 };
 
 const replaceCourse = async (course) => {
+  // Replaces course string to course objects
   let fixed_codes = [];
   let fixed_ids = [];
 

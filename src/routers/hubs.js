@@ -6,6 +6,7 @@ const { applyQueryAsFilters, errOrRes } = require("./functions");
 const router = Router();
 
 router.get("/", async (req, res) => {
+  // Retrieves hubs based on different allowed filters
   if (Object.keys(req.query).length === 0) {
     let result = await queryDB("SELECT * FROM buhubs");
     errOrRes(res, result, 400, 200, "No hubs found.", result);

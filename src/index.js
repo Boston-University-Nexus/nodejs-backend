@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
 const passport = require("passport");
+
 // Security
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
@@ -56,6 +57,7 @@ var generateMoreChildren = false;
 
 if (cluster.isMaster) {
   for (let i = 0; i < numCpu; i++) children.push(cluster.fork());
+
   cluster.on("exit", (wker, code, sig) => {
     if (generateMoreChildren) children.push(cluster.fork());
   });

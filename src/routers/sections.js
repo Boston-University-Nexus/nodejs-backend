@@ -6,6 +6,10 @@ const { applyQueryAsFilters, errOrRes } = require("./functions");
 const router = Router();
 
 router.get("/", async (req, res) => {
+  // Main endpoint for sections
+  // - Allows several filters
+  // - Allows add ons (filter for section, prof or course param)
+
   const allowed_queries = [
     "course_code",
     "course_ID",

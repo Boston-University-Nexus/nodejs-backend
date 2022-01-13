@@ -6,6 +6,7 @@ const { applyQueryAsFilters, errOrRes } = require("./functions");
 const router = Router();
 
 router.get("/", async (req, res) => {
+  // Main endpoint for professors
   const allowed_queries = ["professor_name", "professor_name_contains"];
   const { page } = req.query;
 

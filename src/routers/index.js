@@ -15,7 +15,7 @@ router.use("/courses", coursesRouter);
 
 router.use(
   "/schedules",
-  passport.authenticate("jwt", { session: false }),
+  // passport.authenticate("jwt", { session: false }),
   schedulesRouter
 );
 
@@ -27,13 +27,13 @@ router.use("/professors", professorsRouter);
 
 router.use(
   "/ratings",
-  passport.authenticate("jwt", { session: false }),
+  // passport.authenticate("jwt", { session: false }),
   ratingsRouter
 );
 
 router.use(
   "/algo",
-  passport.authenticate("jwt", { session: false }),
+  // passport.authenticate("jwt", { session: false }),
   algoRouter
 );
 
